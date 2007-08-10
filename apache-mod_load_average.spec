@@ -6,7 +6,7 @@
 Summary:	Mod_load_average is a DSO module for the apache web server
 Name:		apache-%{mod_name}
 Version:	0.1.0
-Release:	%mkrel 3
+Release:	%mkrel 4
 Group:		System/Servers
 License:	Apache License
 URL:		http://svn.force-elite.com/mod_load_average/trunk/src/
