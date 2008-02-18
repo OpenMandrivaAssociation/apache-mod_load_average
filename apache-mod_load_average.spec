@@ -3,7 +3,7 @@
 %define mod_conf A52_%{mod_name}.conf
 %define mod_so %{mod_name}.so
 
-Summary:	Mod_load_average is a DSO module for the apache web server
+Summary:	DSO module for the apache web server
 Name:		apache-%{mod_name}
 Version:	0.1.0
 Release:	%mkrel 5
