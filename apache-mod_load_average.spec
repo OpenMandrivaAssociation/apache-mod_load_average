@@ -6,7 +6,7 @@
 Summary:	DSO module for the apache web server
 Name:		apache-%{mod_name}
 Version:	0.1.0
-Release:	%mkrel 15
+Release:	15
 Group:		System/Servers
 License:	Apache License
 URL:		http://svn.force-elite.com/mod_load_average/trunk/src/
@@ -20,7 +20,6 @@ Requires(pre):	apache >= 2.2.0
 Requires:	apache-conf >= 2.2.0
 Requires:	apache >= 2.2.0
 BuildRequires:	apache-devel >= 2.2.0
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 
 %description
 mod_load_average uses the getloadavg function to determine if the
@@ -41,10 +40,9 @@ bzcat %{SOURCE0} > %{mod_name}.c
 
 %build
 
-%{_sbindir}/apxs -c %{mod_name}.c
+%{_bindir}/apxs -c %{mod_name}.c
 
 %install
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 install -d %{buildroot}%{_libdir}/apache-extramodules
 install -d %{buildroot}%{_sysconfdir}/httpd/modules.d
@@ -68,12 +66,81 @@ if [ "$1" = "0" ]; then
 fi
 
 %clean
-[ "%{buildroot}" != "/" ] && rm -rf %{buildroot}
 
 %files
-%defattr(-,root,root)
 %attr(0644,root,root) %config(noreplace) %{_sysconfdir}/httpd/modules.d/%{mod_conf}
 %attr(0755,root,root) %{_libdir}/apache-extramodules/%{mod_so}
 %{_var}/www/html/addon-modules/*
 
+
+
+
+%changelog
+* Sat Feb 11 2012 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-15mdv2012.0
++ Revision: 772675
+- rebuild
+
+* Tue May 24 2011 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-14
++ Revision: 678334
+- mass rebuild
+
+* Sun Oct 24 2010 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-13mdv2011.0
++ Revision: 588018
+- rebuild
+
+* Mon Mar 08 2010 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-12mdv2010.1
++ Revision: 516136
+- rebuilt for apache-2.2.15
+
+* Sat Aug 01 2009 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-11mdv2010.0
++ Revision: 406606
+- rebuild
+
+* Tue Jan 06 2009 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-10mdv2009.1
++ Revision: 325809
+- rebuild
+
+* Mon Jul 14 2008 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-9mdv2009.0
++ Revision: 234983
+- rebuild
+
+* Thu Jun 05 2008 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-8mdv2009.0
++ Revision: 215597
+- fix rebuild
+
+* Fri Mar 07 2008 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-7mdv2008.1
++ Revision: 181795
+- rebuild
+
+* Mon Feb 18 2008 Thierry Vignaud <tv@mandriva.org> 0.1.0-6mdv2008.1
++ Revision: 170733
+- rebuild
+- fix "foobar is blabla" summary (=> "blabla") so that it looks nice in rpmdrake
+- kill re-definition of %%buildroot on Pixel's request
+
+  + Olivier Blin <blino@mandriva.org>
+    - restore BuildRoot
+
+* Sat Sep 08 2007 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-5mdv2008.0
++ Revision: 82604
+- rebuild
+
+* Fri Aug 10 2007 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-4mdv2008.0
++ Revision: 61211
+- rebuild
+
+
+* Sat Mar 10 2007 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-3mdv2007.1
++ Revision: 140710
+- rebuild
+
+* Thu Nov 09 2006 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-2mdv2007.0
++ Revision: 79451
+- Import apache-mod_load_average
+
+* Mon Aug 07 2006 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-2mdv2007.0
+- rebuild
+
+* Wed Mar 01 2006 Oden Eriksson <oeriksson@mandriva.com> 0.1.0-1mdk
+- initial Mandriva package
 
