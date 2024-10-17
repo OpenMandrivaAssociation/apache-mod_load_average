@@ -9,7 +9,7 @@ Version:	0.1.0
 Release:	16
 Group:		System/Servers
 License:	Apache License
-URL:		http://svn.force-elite.com/mod_load_average/trunk/src/
+URL:		https://svn.force-elite.com/mod_load_average/trunk/src/
 # http://issues.apache.org/bugzilla/show_bug.cgi?id=29122
 Source0: 	http://svn.force-elite.com/svn/mod_load_average/trunk/src/mod_load_average.c.bz2
 Source1:	%{mod_conf}.bz2
